@@ -1,0 +1,17 @@
+.box{
+padding: 1rem;
+border: 2px solid red;
+ width: 40px;
+}
+
+.color0{
+background-color: blue;
+}
+
+.color1{
+background-color: green;
+}
+
+.color2{
+background-color: yellow;
+}
