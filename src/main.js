@@ -35,6 +35,38 @@ function createBox(numBox) {
   }
 }
 
-createBox(8);
+createBox(2);
 
 añadirBoton();
+
+const div4 = document.querySelector("#ex4")
+
+const ex4h1 = document.createElement("h1");
+ex4h1.classList.add("filmname")
+ex4h1.textContent = "Fight club"
+
+const ex4p1 = document.createElement("p");
+ex4p1.classList.add("year")
+ex4p1.textContent = "Year: 1999"
+
+const ex4p2 = document.createElement("p");
+ex4p2.classList.add("description")
+ex4p2.textContent = "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more."
+
+const ex4p3 = document.createElement("p");
+ex4p3.classList.add("category")
+ex4p3.textContent = "Drama"
+
+const ex4img = document.createElement("img");
+ex4img.classList.add("filmimg")
+ex4img.src = "https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg";
+
+div4.appendChild(ex4h1)
+div4.appendChild(ex4p1)
+div4.appendChild(ex4p2)
+div4.appendChild(ex4p3)
+div4.appendChild(ex4img)
+
+
+
+
