@@ -89,3 +89,21 @@ div4.appendChild(ex4img)
 
 
 
+
+
+
+let numeros= [2,4,6,8,10,12,14,16,18,20]
+let numerosalcuadrado = numeros.map(numero => numero * numero);
+console.log(numerosalcuadrado);
+
+let texto = "Bienvenidos"
+let textoplus = texto.split("").map((letter,idx) =>letter.repeat(idx+1)).join();
+console.log(textoplus);
+
+let newtext = texto.split("").map((letter,idx )=> letter+ numeros[idx].repeat(idx))
+
+console.log(newtext);
+
+
+
+
