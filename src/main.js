@@ -1,3 +1,4 @@
+
 import "./style.css";
 /*
 const appholder = document.querySelector("#app");
@@ -101,6 +102,10 @@ let newtext = texto.split("").map((letter,idx )=> letter+ numeros[idx].repeat(id
 console.log(newtext);
 
 */
+
+//FUNCIONES PARA CREAR UNAS CARDS DE LA VARIABLE MOVIES
+
+/*
 const movies = [
   {
     title: "Fight Club",
@@ -344,12 +349,14 @@ function createtitle(movies){
   movietitle.textContent = movies.title;
   return movietitle
 }
+
 function createdescription(movies){
   const moviedesc = document.createElement("p")
   moviedesc.classList.add("moviedescription")
   moviedesc.textContent = movies.description;
   return moviedesc
 }
+
 function createrating(movies){
   const movierating = document.createElement("p")
   movierating.classList.add("movierating")
@@ -369,3 +376,194 @@ movies.forEach((element,idx) => {
   moviediv.appendChild(singlemoviediv)
 });
 
+console.log(performance.now());
+*/
+
+console.log("(5)=====================================================(5)");
+
+const shadowdiv = document.createElement("div");
+shadowdiv.classList.add("div5");
+
+document.querySelector("#app").appendChild(shadowdiv);
+
+let shadowHost = shadowdiv;
+let shadowRoot = shadowHost.attachShadow({ mode: "open" });
+
+shadowRoot.innerHTML = `
+<style>
+p{
+  color:red;
+  }
+  </style>
+  <p>Hola desde el shadow DOM</p> 
+`;
+console.log("(6)=====================================================(6)");
+
+const div6 = document.createElement("div");
+div6.classList.add("container-mouse-move");
+
+document.body.appendChild(div6);
+
+div6.addEventListener("mousemove", (event) => {
+  let x = event.clientX;
+  let y = event.clientY;
+  console.log(x, y);
+});
+
+console.log("(7)=====================================================(7)");
+
+const input7 = document.createElement("input");
+input7.setAttribute("id", "input-test");
+document.body.appendChild(input7);
+
+input7.addEventListener("input", () => {
+  console.log(input7.value);
+});
+
+console.log("(8)=====================================================(8)");
+
+const btn8 = document.createElement("button");
+btn8.textContent = "Número de clicks: 0";
+const resetbtn8 = document.createElement("button");
+resetbtn8.textContent = "Resetea el contador";
+
+document.body.appendChild(btn8);
+document.body.appendChild(resetbtn8);
+
+let total = 0;
+btn8.addEventListener("click", () => {
+  sumarclick();
+});
+
+function sumarclick() {
+  total += 1;
+  btn8.textContent = `Número de clicks: ${total}`;
+}
+
+function resetCounter() {
+  total = 0;
+  btn8.textContent = `Número de clicks: ${total}`;
+}
+
+resetbtn8.addEventListener("click", () => {
+  console.log("hola");
+  resetCounter();
+});
+
+console.log("(9)=====================================================(9)");
+
+document.addEventListener("keydown", (key) => {
+  console.log(key);
+});
+console.log("(10)=====================================================(10)");
+
+const elemento10 = document.createElement("div");
+elemento10.classList.add("elemento10");
+document.body.appendChild(elemento10);
+
+const btn10 = document.createElement("button");
+btn10.textContent = "Mueve el cubo";
+document.body.appendChild(btn10);
+
+function animarElemento(elemento, tiempoInicio) {
+  let tiempoactual = performance.now();
+  let progreso = (tiempoactual - tiempoInicio) / 100;
+
+  if (progreso < 4) {
+    elemento.style.transform = `translateX(${progreso * 100}px)`;
+    requestAnimationFrame(() => animarElemento(elemento, tiempoInicio));
+  } else {
+    elemento.style.transform = `translateX(100px)`;
+  }
+}
+
+btn10.addEventListener("click", () => {
+  requestAnimationFrame((tiempoInicio) =>
+    animarElemento(elemento10, tiempoInicio)
+  );
+});
+
+console.log("(11)=====================================================(11)");
+
+const div11 = document.createElement("div");
+div11.classList.add("div11");
+document.body.appendChild(div11);
+
+let ncolor = 0;
+
+div11.addEventListener("click", () => {
+  changeColor(div11);
+});
+
+function changeColor(element) {
+  ncolor += 1;
+  if (ncolor == 1) {
+    element.style.backgroundColor = "Blue";
+    console.log(ncolor);
+  } else {
+    element.style.backgroundColor = "Red";
+    ncolor = 0;
+  }
+}
+
+
+console.log("(12)=====================================================(12)");
+/*
+
+const div12 = document.createElement("div");
+div12.classList.add("div11");
+document.body.appendChild(div12);
+
+div12.addEventListener("click",()=>{
+rotateElement(div12,45,2)
+})
+
+function rotateElement(elemento,rotacion,tiempo){
+elemento.style.transition = `transform ${tiempo}s ease`
+elemento.style.transform = `rotate(${rotacion}deg)`
+}
+*/
+
+const elemento12 = document.createElement("div");
+elemento12.classList.add("elemento12");
+document.body.appendChild(elemento12);
+
+const btn12 = document.createElement("button");
+btn12.textContent = "Mueve el cubo";
+document.body.appendChild(btn12);
+
+function animarElemento12(elemento, tiempoInicio) {
+  let tiempoactual = performance.now();
+  let progreso = (tiempoactual - tiempoInicio) / 720;
+
+  if (progreso < 1) {
+    elemento.style.transform = `rotate(${progreso*360}deg)`;
+    requestAnimationFrame(() => animarElemento12(elemento, tiempoInicio));
+  } else {
+    elemento.style.transform = `rotate(360)deg`;
+  }
+}
+
+btn12.addEventListener("click", () => {
+  requestAnimationFrame((tiempoInicio) =>
+    animarElemento12(elemento12, tiempoInicio)
+  );
+});
+
+
+function createElement2(parent,type,clase="",id="",content="",photolink="") {
+const element = document.createElement(type)
+element.classList.add(clase)
+element.id = id;
+
+if (type !== "img") element.textContent = content;
+
+if (type =="img" && photolink !==null) {
+  element.src = photolink;
+}
+
+parent.appendChild(btn12);
+    
+}
+
+createElement2("body","div","HOLA","SOYID","BIENVENIDO")
