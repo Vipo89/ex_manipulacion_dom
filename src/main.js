@@ -1,8 +1,7 @@
-
 import "./style.css";
-/*
-const appholder = document.querySelector("#app");
 
+const appholder = document.querySelector("#app");
+/*
 const ex1div = appholder.querySelector("#ex1");
 
 console.log(ex1div.querySelector("p"));
@@ -506,7 +505,6 @@ function changeColor(element) {
   }
 }
 
-
 console.log("(12)=====================================================(12)");
 /*
 
@@ -533,37 +531,102 @@ btn12.textContent = "Mueve el cubo";
 document.body.appendChild(btn12);
 
 function animarElemento12(elemento, tiempoInicio) {
-  let tiempoactual = performance.now();
-  let progreso = (tiempoactual - tiempoInicio) / 720;
+  const tiempoActual = performance.now();
+  const duracion = 1000; // 1 segundo
+  let progreso = (tiempoActual - tiempoInicio) / duracion;
+
+  if (progreso > 1) progreso = 1;
+
+  const angulo = progreso * 360;
+  elemento.style.transform = `rotate(${angulo}deg)`;
 
   if (progreso < 1) {
-    elemento.style.transform = `rotate(${progreso*360}deg)`;
     requestAnimationFrame(() => animarElemento12(elemento, tiempoInicio));
-  } else {
-    elemento.style.transform = `rotate(360)deg`;
   }
 }
 
 btn12.addEventListener("click", () => {
-  requestAnimationFrame((tiempoInicio) =>
-    animarElemento12(elemento12, tiempoInicio)
-  );
+  animarElemento12(elemento12, performance.now());
 });
 
+function createElement2(
+  parent,
+  type,
+  clase = "",
+  id = "",
+  content = "",
+  photolink = ""
+) {
+  const element = document.createElement(type);
 
-function createElement2(parent,type,clase="",id="",content="",photolink="") {
-const element = document.createElement(type)
-element.classList.add(clase)
-element.id = id;
+  if (clase) element.classList.add(clase);
+  if (id) element.id = id;
 
-if (type !== "img") element.textContent = content;
+  if (type !== "img") {
+    element.textContent = content;
+  } else if (photolink) {
+    element.src = photolink;
+    element.alt = content;
+  }
 
-if (type =="img" && photolink !==null) {
-  element.src = photolink;
+  parent.appendChild(element);
+  return element;
 }
+createElement2(document.body, "div", "HOLA", "SOYID", "BIENVENIDO");
+createElement2(
+  document.querySelector("#SOYID"),
+  "div",
+  "HOLA",
+  "SOYID",
+  "Estoy dentro de bienvenido"
+);
 
-parent.appendChild(btn12);
-    
-}
+console.log("(13)=====================================================(13)");
 
-createElement2("body","div","HOLA","SOYID","BIENVENIDO")
+const zonaParaDrop = document.createElement("div");
+zonaParaDrop.classList.add("dropzone");
+zonaParaDrop.textContent = "Suelta tu objeto aquí";
+
+const draggableObject = document.createElement("div");
+draggableObject.classList.add("dragobj");
+draggableObject.textContent = "Arrástrame";
+draggableObject.draggable = true;
+
+appholder.appendChild(zonaParaDrop);
+appholder.appendChild(draggableObject);
+
+const sendObject = {
+  objectname: "Pala",
+  price: 15,
+  stock: 10,
+};
+
+draggableObject.addEventListener("dragstart", (event) => {
+  event.dataTransfer.setData("sendData", JSON.stringify(sendObject));
+  console.log("Objeto lanzado");
+});
+
+zonaParaDrop.addEventListener("dragover", (event) => {
+  event.preventDefault();
+});
+
+zonaParaDrop.addEventListener("drop", (event) => {
+  event.preventDefault();
+  const getobject = event.dataTransfer.getData("sendData");
+  console.log(getobject);
+  const goodobj = JSON.parse(getobject);
+  console.log(goodobj);
+
+  const goodobjkeys = Object.keys(goodobj);
+  console.log(goodobjkeys);
+  /*
+const punto = "."
+goodobjkeys.forEach(element1 => {
+  console.log(`${goodobj}${punto}${element1}`);
+});
+*/
+
+  goodobjkeys.forEach((element1) => {
+    console.log(goodobj[element1]);
+  });
+});

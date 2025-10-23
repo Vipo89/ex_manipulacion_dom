@@ -105,3 +105,24 @@ border: 3px solid black;
  height: 48px;
  background-color: black;
 }
+
+
+.dropzone{
+background-color: turquoise;
+border: 2px solid rgb(77, 12, 77);
+text-align:  center;
+padding: 20px;
+border-radius: 10px;
+margin: 15px;
+width: 300px;
+}
+
+.dragobj{
+  background-color: violet;
+  border: 5px solid rgb(85, 9, 22);
+  text-align:  center;
+  padding: 20px;
+  border-radius: 15px;
+margin: 5px;
+  width: 100px;
+}
