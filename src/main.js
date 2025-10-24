@@ -630,3 +630,155 @@ goodobjkeys.forEach(element1 => {
     console.log(goodobj[element1]);
   });
 });
+
+console.log("(15)=====================================================(15)");
+
+//Crea un mensaje que se muestre en #app 3 segundos después de pulsar un botón.
+
+const btn15 = document.createElement("button");
+btn15.textContent = "Pulsa aquí para generar un mensaje";
+document.querySelector("#app").appendChild(btn15);
+
+btn15.addEventListener("click", () => {
+  alertMessage();
+});
+function alertMessage() {
+  console.log("hola");
+}
+
+console.log("(16)=====================================================(16)");
+
+//Crea un contador que aumente cada segundo y un botón que lo detenga cuando se pulse y otro para resetearlo a 0.
+
+const div16 = document.createElement("div");
+div16.classList.add("div16");
+
+const startBtn = document.createElement("button");
+const stopBtn = document.createElement("button");
+const resetBtn = document.createElement("button");
+const counterText = document.createElement("p");
+
+counterText.textContent = "0";
+startBtn.textContent = "Start";
+stopBtn.textContent = "Stop";
+resetBtn.textContent = "Reset";
+
+div16.appendChild(counterText);
+div16.appendChild(startBtn);
+div16.appendChild(stopBtn);
+div16.appendChild(resetBtn);
+
+document.querySelector("#app").appendChild(div16);
+
+let counter = 0;
+
+let intervalD = null;
+function startCounter() {
+  if (!intervalD) {
+    intervalD = setInterval(() => {
+      counterText.textContent = ++counter;
+    }, 1000);
+  }
+}
+
+startBtn.addEventListener("click", () => {
+  startCounter();
+});
+
+function stopCounter() {
+  clearInterval(intervalD);
+}
+stopBtn.addEventListener("click", stopCounter);
+
+resetBtn.addEventListener("click", () => {
+  counter = 0;
+  counterText.textContent = counter;
+  stopCounter();
+});
+
+console.log("(17)=====================================================(17)");
+
+//Crea un formulario simple con nombre, direccion, email y edad, y al enviarlo
+// Muestra los datos en pantalla sin recargar la página (usando preventDefault).
+
+const div17 = document.createElement("div");
+div17.classList.add("div17");
+
+const form17 = document.createElement("form");
+
+const namelabel = document.createElement("label");
+namelabel.textContent = "Nombre";
+namelabel.setAttribute("for", "nombre");
+
+const nameinput = document.createElement("input");
+nameinput.setAttribute("type", "text");
+nameinput.setAttribute("id", "nombre");
+nameinput.setAttribute("name", "nombre");
+
+const addreslabel = document.createElement("label");
+addreslabel.textContent = "Dirección";
+addreslabel.setAttribute("for", "direccion");
+
+const addresinput = document.createElement("input");
+addresinput.setAttribute("type", "text");
+addresinput.setAttribute("id", "addres");
+addresinput.setAttribute("name", "addres");
+
+const emaillabel = document.createElement("label");
+emaillabel.textContent = "Email";
+emaillabel.setAttribute("for", "email");
+
+const emailinput = document.createElement("input");
+emailinput.setAttribute("type", "text");
+emailinput.setAttribute("id", "email");
+emailinput.setAttribute("name", "email");
+
+const agelabel = document.createElement("label");
+agelabel.textContent = "Edad";
+agelabel.setAttribute("for", "age");
+
+const ageinput = document.createElement("input");
+ageinput.setAttribute("type", "number");
+ageinput.setAttribute("id", "age");
+ageinput.setAttribute("name", "age");
+
+const submitBtn = document.createElement("button");
+submitBtn.textContent = "Enviar";
+submitBtn.setAttribute("type", "submit");
+
+form17.appendChild(namelabel);
+form17.appendChild(nameinput);
+form17.appendChild(addreslabel);
+form17.appendChild(addresinput);
+form17.appendChild(emaillabel);
+form17.appendChild(emailinput);
+form17.appendChild(agelabel);
+form17.appendChild(ageinput);
+form17.appendChild(submitBtn);
+
+div17.appendChild(form17);
+document.querySelector("#app").appendChild(div17);
+
+
+
+form17.addEventListener("submit", function (evento) {
+  evento.preventDefault();
+  console.log(nameinput.value);
+  console.log(addresinput.value);
+  console.log(emailinput.value);
+  console.log(ageinput.value);
+
+console.log("(17)=====================================================(17)");
+
+  const errors = [];
+  if (nameinput.value.trim().length <= 0) {
+    errors.push(" El nombre es obligatorio");
+  }
+  if (Number(ageinput.value) < 18) {
+    errors.push(" La edad debe ser mayor a 18");
+  }
+  if (!emailinput.value.includes("@") || emailinput.value.length < 10) {
+    errors.push(" El correo debe contener @ y ser mayor a 10 caracteres");
+  }
+  alert(errors)
+});
