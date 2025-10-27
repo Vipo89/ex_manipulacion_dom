@@ -128,10 +128,38 @@ margin: 5px;
 }
 
 .div16{
-
   margin: 15px;
   padding: 10px;
   background-color: aquamarine;
   width: 250px;
+}
 
+.main_div{
+margin: 0 auto;
+width: 50%;
+
+}
+
+#products_grid{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  margin: 10px;
+  gap: 15px;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+  background-color: grey;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.card img {
+  width: 150px;      
+  height: 150px;    
+  object-fit: cover; 
+  border-radius: 5px;
 }

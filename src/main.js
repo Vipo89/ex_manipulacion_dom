@@ -377,7 +377,7 @@ movies.forEach((element,idx) => {
 
 console.log(performance.now());
 */
-
+/*
 console.log("(5)=====================================================(5)");
 
 const shadowdiv = document.createElement("div");
@@ -521,7 +521,7 @@ elemento.style.transition = `transform ${tiempo}s ease`
 elemento.style.transform = `rotate(${rotacion}deg)`
 }
 */
-
+/*
 const elemento12 = document.createElement("div");
 elemento12.classList.add("elemento12");
 document.body.appendChild(elemento12);
@@ -625,7 +625,7 @@ goodobjkeys.forEach(element1 => {
   console.log(`${goodobj}${punto}${element1}`);
 });
 */
-
+/*
   goodobjkeys.forEach((element1) => {
     console.log(goodobj[element1]);
   });
@@ -904,6 +904,51 @@ fetch(DeleteURL, {
   .then((response) => response.json())
   .then((data) => console.log(data))
   .catch((err) => console.log(err));
+*/
+
+const mainDiv = document.createElement("div")
+mainDiv.classList.add("main_div")
+document.body.appendChild(mainDiv);
 
 
-  
+const productsGrid = document.createElement("div");
+productsGrid.setAttribute("id", "products_grid");
+document.body.appendChild(productsGrid);
+
+mainDiv.appendChild(productsGrid)
+
+async function obtenerDatos(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log("Error:", error.message);
+  }
+}
+
+async function mostrarProductos() {
+  const productdata = await obtenerDatos("https://fakestoreapi.com/products");
+
+  productdata.forEach((product, idx) => {
+    const newProduct = document.createElement("div");
+    newProduct.classList.add("card", `product${idx}`);
+
+    const productTitle = document.createElement("h2");
+    productTitle.textContent = product.title;
+
+    const productImg = document.createElement("img");
+    productImg.setAttribute("src", product.image);
+
+    const productPrice = document.createElement("p");
+    productPrice.textContent = `$${product.price}`;
+
+    newProduct.appendChild(productTitle);
+    newProduct.appendChild(productImg);
+    newProduct.appendChild(productPrice);
+    productsGrid.appendChild(newProduct);
+  });
+}
+
+mostrarProductos();
