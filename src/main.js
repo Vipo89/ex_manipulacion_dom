@@ -759,8 +759,6 @@ form17.appendChild(submitBtn);
 div17.appendChild(form17);
 document.querySelector("#app").appendChild(div17);
 
-
-
 form17.addEventListener("submit", function (evento) {
   evento.preventDefault();
   console.log(nameinput.value);
@@ -768,7 +766,7 @@ form17.addEventListener("submit", function (evento) {
   console.log(emailinput.value);
   console.log(ageinput.value);
 
-console.log("(17)=====================================================(17)");
+  console.log("(17)=====================================================(17)");
 
   const errors = [];
   if (nameinput.value.trim().length <= 0) {
@@ -780,5 +778,132 @@ console.log("(17)=====================================================(17)");
   if (!emailinput.value.includes("@") || emailinput.value.length < 10) {
     errors.push(" El correo debe contener @ y ser mayor a 10 caracteres");
   }
-  alert(errors)
+  alert(errors);
 });
+
+console.log("(19)=====================================================(19)");
+
+const url = "https://jsonplaceholder.typicode.com/users";
+
+const ul = document.createElement("ul");
+
+fetch(url)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`Error al obtener los datos`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log(typeof data);
+    const names = [];
+    data.forEach((e, idx) => {
+      names.push(e.name);
+      const li = document.createElement("li");
+      li.classList.add(`Li${idx}`);
+      li.textContent = e.name;
+      ul.appendChild(li);
+    });
+    console.log(data);
+    console.log(names);
+  })
+  .catch((err) => {
+    console.log(`El error es ${err.message}`);
+  });
+
+document.querySelector("#app").appendChild(ul);
+console.log("(20)=====================================================(20)");
+
+const urlfake = "https://jsonplaceholder.typicode.com12/users";
+
+fetch(urlfake)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`Error al obtener los datos`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    console.log(typeof data);
+    const names = [];
+    data.forEach((e) => {
+      names.push(e.name);
+    });
+    console.log(data);
+    console.log(names);
+  })
+  .catch((err) => {
+    console.log(`El error es ${err.message}`);
+  });
+
+console.log("(21)=====================================================(21)");
+
+const postURL = "https://jsonplaceholder.typicode.com/posts";
+
+const sendPostObject = {
+  userid: 1,
+  id: 101,
+  title: "Hola",
+  body: "Que tal",
+};
+
+fetch(postURL, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(sendPostObject),
+})
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
+console.log("(22)=====================================================(22)");
+
+const putURL = "https://jsonplaceholder.typicode.com/posts/1";
+
+const sendPostPutObject = {
+  userid: 1,
+  id: 1,
+  title: "Hola",
+  body: "Que tal",
+};
+
+fetch(putURL, {
+  method: "PUT",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(sendPostPutObject),
+})
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
+console.log("(23)=====================================================(23)");
+
+const patchURL = "https://jsonplaceholder.typicode.com/posts/1";
+
+const sendPostPatchObject = {
+  id: 1,
+  title: "Hola, esto es un nuevo título",
+};
+
+fetch(patchURL, {
+  method: "PATCH",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(sendPostPatchObject),
+})
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
+console.log("(24)=====================================================(24)");
+
+const DeleteURL = "https://jsonplaceholder.typicode.com/posts/1";
+
+fetch(DeleteURL, {
+  method: "DELETE",
+})
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
+
+  
