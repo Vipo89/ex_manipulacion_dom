@@ -780,6 +780,7 @@ form17.addEventListener("submit", function (evento) {
   }
   alert(errors);
 });
+*/
 
 console.log("(19)=====================================================(19)");
 
@@ -904,18 +905,19 @@ fetch(DeleteURL, {
   .then((response) => response.json())
   .then((data) => console.log(data))
   .catch((err) => console.log(err));
-*/
+0;
+0
+console.log("(EX)=====================================================(EX)");
 
-const mainDiv = document.createElement("div")
-mainDiv.classList.add("main_div")
+const mainDiv = document.createElement("div");
+mainDiv.classList.add("main_div");
 document.body.appendChild(mainDiv);
-
 
 const productsGrid = document.createElement("div");
 productsGrid.setAttribute("id", "products_grid");
 document.body.appendChild(productsGrid);
 
-mainDiv.appendChild(productsGrid)
+mainDiv.appendChild(productsGrid);
 
 async function obtenerDatos(url) {
   try {
@@ -951,4 +953,57 @@ async function mostrarProductos() {
   });
 }
 
+
 mostrarProductos();
+
+console.log("(25)=====================================================(25)");
+
+const input25 = document.createElement("input");
+input25.setAttribute("type", "text");
+
+const button25 = document.createElement("button");
+button25.textContent = "Guardar";
+
+const p25 = document.createElement("p")
+
+if (typeof localStorage !== undefined) {
+  p25.textContent = localStorage.getItem("nombre")
+}
+
+document.body.appendChild(p25);
+document.body.appendChild(input25);
+document.body.appendChild(button25);
+
+button25.addEventListener("click", (e) => {
+if (typeof localStorage !== undefined) {
+  localStorage.setItem("nombre", input25.value);
+}
+});
+
+console.log("(26)=====================================================(26)");
+
+const input26 = document.createElement("input");
+input26.setAttribute("type", "text");
+
+const button26 = document.createElement("button");
+button26.textContent = "Guardar";
+
+const p26 = document.createElement("p")
+
+if (typeof sessionStorage !== undefined) {
+  p26.textContent = sessionStorage.getItem("nombre")
+}
+
+document.body.appendChild(p26);
+document.body.appendChild(input26);
+document.body.appendChild(button26);
+
+button26.addEventListener("click", (e) => {
+if (typeof sessionStorage !== undefined) {
+  sessionStorage.setItem("nombre", input26.value);
+}
+});
+
+console.log("(26)=====================================================(26)");
+
+
