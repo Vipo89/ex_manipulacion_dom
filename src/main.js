@@ -976,7 +976,7 @@ document.body.appendChild(button25);
 
 button25.addEventListener("click", (e) => {
 if (typeof localStorage !== undefined) {
-  localStorage.setItem("nombre", input25.value);
+  localStorage.setItem("nombre", input25.value.trim());
 }
 });
 
@@ -1000,7 +1000,7 @@ document.body.appendChild(button26);
 
 button26.addEventListener("click", (e) => {
 if (typeof sessionStorage !== undefined) {
-  sessionStorage.setItem("nombre", input26.value);
+  sessionStorage.setItem("nombre", input26.value.trim());
 }
 });
 
